@@ -13,13 +13,15 @@ extends JPanel
    private static String amountString = "Name: ";
    private JFormattedTextField amountField;
    String mName;
-         
+   private static int xPos = 200;
+   private static int yPos = 200;
+
    public Person()
    {  
       super(new BorderLayout());
       amountLabel = new JLabel(amountString);
       amountField = new JFormattedTextField();
-      amountField.setValue(" ");
+      amountField.setValue("");
       amountField.setColumns(10);
       amountLabel.setLabelFor(amountField);
       JPanel labelPane = new JPanel(new GridLayout(0,1));
@@ -36,15 +38,12 @@ extends JPanel
       frame.getContentPane().add(BorderLayout.CENTER, labelPane);
       frame.getContentPane().add(BorderLayout.LINE_END, fieldPane);
       frame.pack();
-      frame.setLocationRelativeTo(null);
+      frame.setLocation(xPos, yPos); yPos += 100;
       frame.setVisible(true);
    }  
-  
 
    public void update(Observable arg0, Object arg1)
    {
-       System.out.println("here");
       amountField.setValue(arg1);      
    }  
-  
 }

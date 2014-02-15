@@ -4,7 +4,7 @@ import javax.swing.*;
 
 
 public class ObserverPatternMain
-   extends JPanel
+   extends JFrame
    implements Runnable, ActionListener
 {
    Product autoFillName;
@@ -25,24 +25,17 @@ public class ObserverPatternMain
    
    public void run()
    {
-      createAndShowGUI();
+      setVisible(true);
       Person arpitPerson=new Person();         
       autoFillName.registerObserver(arpitPerson);
       Person arpitPerson1=new Person();         
       autoFillName.registerObserver(arpitPerson1);  
-
-      
-      
-      text =  JOptionPane.showInputDialog(this ,"Enter your name:");
-      autoFillName.setAvailability(text);
-      autoFillName.notifyObservers(autoFillName, text);
-      
-                     
    }
    
    public ObserverPatternMain()
    {
-      super(new BorderLayout());
+      super("Formatted Text Demo");
+      setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
       amountLabel = new JLabel(amountString);
       amountField = new JFormattedTextField();
       amountField.setValue(" ");
@@ -52,19 +45,17 @@ public class ObserverPatternMain
       labelPane.add(amountLabel);
       JPanel fieldPane = new JPanel(new GridLayout(0,1));
       fieldPane.add(amountField);
-
      
-      panel = new JPanel(new FlowLayout(FlowLayout.TRAILING));
+      panel = new JPanel(new BorderLayout());
+      panel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
       button = new JButton("auto fill name");
       button.addActionListener(this);
-      //panel.add(button);
-      
-      
-      setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-      add(labelPane, BorderLayout.CENTER);
-      add(fieldPane, BorderLayout.LINE_END);
-      add(button, BorderLayout.SOUTH);
-        
+
+      panel.add(labelPane, BorderLayout.CENTER);
+      panel.add(fieldPane, BorderLayout.LINE_END);
+      panel.add(button, BorderLayout.SOUTH);
+      getContentPane().add(panel);
+      pack();
 
       update = 0;
       autoFillName=new Product("Samsung", "Mobile", "Not available");       
@@ -72,14 +63,8 @@ public class ObserverPatternMain
    
    public void actionPerformed(ActionEvent e)
    {
-      System.out.println(amountField.getText());
-      // text =  JOptionPane.showInputDialog(this ,"Enter your name:");
-      //autoFillName.setAvailability(text);
       text = amountField.getText();
-      // update = 1;
-      //  System.out.println(amountField.getText());
-      autoFillName.setAvailability(amountField.getText());
-      //autoFillName.notifyObservers(autoFillName, amountField.getText());
+      autoFillName.setAvailability(text);
    }
 
    private static void createAndShowGUI()
