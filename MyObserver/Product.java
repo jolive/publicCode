@@ -65,7 +65,6 @@ public class Product
          for (Observer ob : observers) {  
              ob.update(observable,this.availability);  
       }  
-  
     }  
   
     public void registerObserver(Observer observer)
