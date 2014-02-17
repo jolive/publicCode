@@ -62,7 +62,7 @@ extends JPanel
 
        mType = Type;
       JFrame frame = new JFrame(mType);
-      // frame.add(new Person());
+     
       frame.getContentPane().add(BorderLayout.CENTER, labelPane);
       frame.getContentPane().add(BorderLayout.LINE_END, fieldPane);
       frame.pack();
@@ -76,5 +76,7 @@ extends JPanel
    public void update(Observable arg0, Object arg1)
    {
       amountField.setValue(arg1);      
-   }  
+   }
+
+   
 }
