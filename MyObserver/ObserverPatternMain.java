@@ -7,31 +7,51 @@ public class ObserverPatternMain
    extends JFrame
    implements Runnable, ActionListener
 {
-   Product autoFillName;
+    /**
+    * set up a object which can be observed
+    */
+   Info autoFillName;
+
+    /**
+    * variables which update the observers
+    */
    String text;
    int update;
+
+    /**
+    * Jlabel and Jtextfield
+    */
    private JLabel amountLabel;
    private static String amountString = "Your Name: ";
    private JFormattedTextField amountField;
    JPanel panel;
    JButton button;
 
-   
+
+   /**
+    * Main
+    */
    public static void main(String[] args)
    {
-      // Thread t1 = new Thread(ObserverPatternMain);
       new ObserverPatternMain().run();
    }
-   
+
+   /**
+    * Call two instances of Form and register then as Observers
+    */
    public void run()
    {
       setVisible(true);
-      Person arpitPerson=new Person();         
-      autoFillName.registerObserver(arpitPerson);
-      Person arpitPerson1=new Person();         
-      autoFillName.registerObserver(arpitPerson1);  
+      Form social=new Form("Social Security");         
+      autoFillName.registerObserver(social);
+      Form marriage=new Form("Marriage Form");         
+      autoFillName.registerObserver(marriage);  
    }
-   
+
+   /**
+    *Constructor
+    * Call two instances of Form and register then as Observers
+    */
    public ObserverPatternMain()
    {
       super("Formatted Text Demo");
@@ -58,15 +78,20 @@ public class ObserverPatternMain
       pack();
 
       update = 0;
-      autoFillName=new Product("Samsung", "Mobile", "Not available");       
+      autoFillName=new Info("Marriage Date", "Birthday", "John");       
    }
-   
+
+    /**
+    * action Performed Call if button is called
+    * The text in the text field is sent to all observering objects 
+    */
    public void actionPerformed(ActionEvent e)
    {
       text = amountField.getText();
-      autoFillName.setAvailability(text);
+      autoFillName.setmName(text);
    }
 
+   /*
    private static void createAndShowGUI()
    {
       //Create and set up the window.
@@ -81,4 +106,5 @@ public class ObserverPatternMain
       frame.setLocationRelativeTo(null);
       frame.setVisible(true);
    }
+   */
 }  
