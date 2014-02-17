@@ -21,6 +21,10 @@ extends JPanel
    private static String amountString = "Name: ";
    private JFormattedTextField amountField;
 
+   private JLabel BdayLabel;
+   private static String Label = "Birthday: ";
+   private JFormattedTextField Field;
+
     /**
     * Name of the window
     */
@@ -46,10 +50,20 @@ extends JPanel
       amountField.setValue("");
       amountField.setColumns(10);
       amountLabel.setLabelFor(amountField);
+
+      //
+      BdayLabel = new JLabel(Label);
+      Field = new JFormattedTextField();
+      Field.setValue("");
+      Field.setColumns(10);
+      BdayLabel.setLabelFor(Field);
+      
       JPanel labelPane = new JPanel(new GridLayout(0,1));
       labelPane.add(amountLabel);
+      labelPane.add(BdayLabel);
       JPanel fieldPane = new JPanel(new GridLayout(0,1));
       fieldPane.add(amountField);
+      fieldPane.add(Field);
       
       setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
       add(labelPane, BorderLayout.CENTER);
