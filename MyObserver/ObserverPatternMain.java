@@ -70,13 +70,6 @@ public class ObserverPatternMain
       Field.setValue(" ");
       Field.setColumns(10);
       BdayLabel.setLabelFor(Field);
-      //JPanel labelPane1 = new JPanel(new GridLayout(0,1));
-      //labelPane1.add(BdayLabel);
-      //JPanel fieldPane1 = new JPanel(new GridLayout(0,1));
-      //fieldPane1.add(Field);
-     
-      // panel1 = new JPanel(new BorderLayout());
-      //panel1.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
       JButton button1 = new JButton( new AbstractAction("Bday auto fill")
          {
             public void actionPerformed (ActionEvent e)
@@ -85,11 +78,8 @@ public class ObserverPatternMain
                autoFillBday.setmName(Bday);
             }
          });
-      // button1.addActionListener(this);
 
-      //
-
-       amountLabel = new JLabel(amountString);
+      amountLabel = new JLabel(amountString);
       amountField = new JFormattedTextField();
       amountField.setValue(" ");
       amountField.setColumns(10);
@@ -108,8 +98,6 @@ public class ObserverPatternMain
       button = new JButton("auto fill name");
       button.addActionListener(this);
 
-      
-
       panel.add(labelPane, BorderLayout.CENTER);
       panel.add(fieldPane, BorderLayout.LINE_END);
 
@@ -118,20 +106,12 @@ public class ObserverPatternMain
 
       panel.add(Buttons, BorderLayout.SOUTH);
 
-      
-      
-      
-      //  panel.add(labelPane1, BorderLayout.CENTER);
-      //panel.add(fieldPane1, BorderLayout.LINE_END);
-      
-      // panel.add(button, BorderLayout.SOUTH);
-      //panel.add(button1, BorderLayout.SOUTH);
       getContentPane().add(panel);
       pack();
 
       update = 0;
-      autoFillName=new Info("Marriage Date", "Birthday", "John");
-      autoFillBday = new Info2("Marriage Date", "Birthday", "John");
+      autoFillName=new Info("John");
+      autoFillBday = new Info2("John");
    }
 
     /**
@@ -143,21 +123,4 @@ public class ObserverPatternMain
       text = amountField.getText();
       autoFillName.setmName(text);
    }
-
-   /*
-   private static void createAndShowGUI()
-   {
-      //Create and set up the window.
-      JFrame frame = new JFrame("FormattedTextFieldDemo");
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
-      //Add contents to the window.
-      frame.add(new ObserverPatternMain());
- 
-      //Display the window.
-      frame.pack();
-      frame.setLocationRelativeTo(null);
-      frame.setVisible(true);
-   }
-   */
 }  

@@ -89,7 +89,7 @@ extends JPanel
     */
    public void update(Observable arg0, Object arg1)
    {
-      amountField.setValue(arg1);      
+        amountField.setValue(arg1);      
    }
 
    

@@ -17,16 +17,6 @@ public class Info
    private ArrayList<Observer> observers = new ArrayList<Observer>();
 
    /**
-    * The name of the product or data
-    */
-   private String productName;
-
-   /**
-    * The type of the info
-    */
-   private String productType;
-
-   /**
     * The name of the info
     */
    String mName;  
@@ -35,11 +25,9 @@ public class Info
    /**
     * constructor
     */
-   public Info(String productName, String productType,String name)
+   public Info(String name)
    {  
-      super();  
-      this.productName = productName;  
-      this.productType = productType;  
+      super();    
       this.mName=name;  
    }  
 
@@ -59,36 +47,6 @@ public class Info
       this.observers = observers;  
    }
 
-   /**
-    * get the product's name
-    */
-   public String getProductName()
-   {  
-      return productName;  
-   }
-
-   /**
-    * set the product's name
-    */
-   public void setProductName(String productName)
-   {  
-      this.productName = productName;  
-   }
-
-   /**
-    * get the product type
-    */
-   public String getProductType() {  
-      return productType;  
-   }
-
-   /**
-    * set the product type
-    */
-   public void setProductType(String productType)
-   {  
-      this.productType = productType;  
-   }  
 
    /**
     * get the name

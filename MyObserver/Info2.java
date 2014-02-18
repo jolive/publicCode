@@ -15,17 +15,7 @@ public class Info2
     * An arraylist which holds all resgistered observers
     */
    private ArrayList<Observer> observers = new ArrayList<Observer>();
-
-   /**
-    * The name of the product or data
-    */
-   private String productName;
-
-   /**
-    * The type of the info
-    */
-   private String productType;
-
+   
    /**
     * The name of the info
     */
@@ -35,11 +25,9 @@ public class Info2
    /**
     * constructor
     */
-   public Info2(String productName, String productType,String name)
+   public Info2(String name)
    {  
-      super();  
-      this.productName = productName;  
-      this.productType = productType;  
+      super();    
       this.mName=name;  
    }  
 
@@ -58,37 +46,6 @@ public class Info2
    {  
       this.observers = observers;  
    }
-
-   /**
-    * get the product's name
-    */
-   public String getProductName()
-   {  
-      return productName;  
-   }
-
-   /**
-    * set the product's name
-    */
-   public void setProductName(String productName)
-   {  
-      this.productName = productName;  
-   }
-
-   /**
-    * get the product type
-    */
-   public String getProductType() {  
-      return productType;  
-   }
-
-   /**
-    * set the product type
-    */
-   public void setProductType(String productType)
-   {  
-      this.productType = productType;  
-   }  
 
    /**
     * get the name
