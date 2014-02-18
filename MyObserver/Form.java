@@ -85,11 +85,18 @@ extends JPanel
    }  
 
     /**
-    * update the text field when the Observer class is updated
-    */
+     * update the text field when the Observer class is updated
+     */
    public void update(Observable arg0, Object arg1)
    {
-        amountField.setValue(arg1);      
+      if ( arg0 instanceof Info)
+      {
+         amountField.setValue(arg1);
+      }
+      else
+      {
+         Field.setValue(arg1);
+      }
    }
 
    

@@ -52,9 +52,14 @@ public class ObserverPatternMain
       setVisible(true);
       Form social=new Form("Social Security");         
       autoFillName.registerObserver(social);
-      Form marriage=new Form("Marriage Form");         
-      // autoFillName.registerObserver(marriage);
+      Form marriage=new Form("Marriage Form");        
       autoFillBday.registerObserver(marriage);
+
+      
+      Form tax=new Form("Tax Form");
+      autoFillName.registerObserver(tax);
+      autoFillBday.registerObserver(tax);
+      
    }
 
    /**
