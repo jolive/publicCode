@@ -5,13 +5,20 @@ import javax.swing.*;
 
 public class BorderLayoutDemo
    extends JFrame
-   implements ItemListener
+   implements ItemListener, Runnable
 {
    public static void main(String[] args)
    {
-      new BorderLayoutDemo().setVisible(true);
+      new BorderLayoutDemo().run();
       
    }
+
+   public void run()
+   {
+      new BorderLayoutDemo().setVisible(true);
+      newWindow blue = new newWindow();
+   }
+      
 
    JCheckBox mCheck;
    
@@ -53,6 +60,7 @@ public class BorderLayoutDemo
 
       
       setSize(300,300);
+      setLocationRelativeTo(null);
       // setVisible(true);
    }
  
@@ -69,5 +77,6 @@ public class BorderLayoutDemo
 
 }
  
-      
+
+
   
