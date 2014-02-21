@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 import javafx.application.Application;
@@ -39,9 +38,9 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 /**
- * The Glory Application class that creates
- * and manages the interface for Threads of Glory.
- */
+* The Glory Application class that creates
+* and manages the interface for Threads of Glory.
+*/
 public class Glory
    extends Application
 {
@@ -50,17 +49,14 @@ public class Glory
    private Scene mScene;
    private TextField mTextField;
 
-   private static GlorifiedList mRunnables;
-   private static GlorifiedList mRunningThreads;
+   private GlorifiedList mRunnables;
+   private GlorifiedList mRunningThreads;
    private BorderPane mBorderPane;
 
    private EventHandler<ActionEvent> mStartEventHandler;
    private EventHandler<ActionEvent> mStopEventHandler;
 
    private static Glory cInstance = null;
-
- 
-   
 
    private class GlorifiedList
       extends VBox
@@ -161,7 +157,7 @@ public class Glory
       mPrimaryStage.setOnCloseRequest(
          new EventHandler<WindowEvent>()
          {
-            public void handle(WindowEvent event) 
+            public void handle(WindowEvent event)
             {
                event.consume();
                try
@@ -207,21 +203,21 @@ public class Glory
       hbox.setMargin(mTextField, new Insets(10, 10, 10, 0));
       hbox.setHgrow(mTextField, Priority.ALWAYS);
 
-      mRunnables = 
+      mRunnables =
          new GlorifiedList(
             "Runnables", null,
 /*
-            FXCollections.observableArrayList(
-               "Silly", "Blinky", "Lovely", "Funny", "Jiggly", "Praiser"),
+FXCollections.observableArrayList(
+"Silly", "Blinky", "Lovely", "Funny", "Jiggly", "Praiser"),
 */
             "Start", mStartEventHandler, SelectionMode.SINGLE);
 
-      mRunningThreads = 
+      mRunningThreads =
          new GlorifiedList(
             "Running Threads", null,
 /*
-            FXCollections.observableArrayList(
-               "SillyThread-2", "SillyThread-4", "LovelyThread-6", "PraiserThread-8"),
+FXCollections.observableArrayList(
+"SillyThread-2", "SillyThread-4", "LovelyThread-6", "PraiserThread-8"),
 */
             "Stop", mStopEventHandler, SelectionMode.MULTIPLE);
 
@@ -255,7 +251,6 @@ public class Glory
    public static void main(String[] args)
    {
       launch(args);
-      
    }
 
    private void enterRunnable()
@@ -280,7 +275,6 @@ public class Glory
             isReallyRunnable = Runnable.class.isAssignableFrom(runnable);
             if (isReallyRunnable)
             {
-
                mRunnables.addToList(runnable.getName());
             }
             else
@@ -298,14 +292,14 @@ public class Glory
 
    private boolean startThread()
    {
-      String name = mRunnables.getSelectedItem();    
+      String name = mRunnables.getSelectedItem();
       Thread t = createThread(name);
       if (t != null)
-      { 
+      {
          mRunningThreads.addToList(t.getName());
          t.start();
          return true;
-      }     
+      }
       return false;
    }
 
@@ -319,7 +313,6 @@ public class Glory
          Runnable r = (Runnable) Class.forName(name).newInstance();
          t = new Thread(r);
          t.setName(r.getClass().getName() + t.getName());
-           
       }
       catch (Exception e)
       {
@@ -327,25 +320,31 @@ public class Glory
       }
       return t; // should never be null
    }
+
+   public Glory()
+   {
+      super();
+      synchronized (Glory.class)
+      {
+         if (cInstance != null)
+         {
+            throw new UnsupportedOperationException(
+               getClass() +
+               " is singleton but constructor called more than once");
+         }
+         cInstance = this;
+      }
+   }
    
    public static Glory getInstance()
    {
-      if(mRunningThreads.isInList(Thread.currentThread().getName())  ||
-                                  mRunnables.isInList(Thread.currentThread().getName()))
-      { 
-         cInstance = new Glory();
-      }
-      else
-      {
-         cInstance = null;
-      }
       return cInstance;
    }
 
    private void stopThread()
    {
       mRunningThreads.removeFromList();
-   }         
+   }
 
    public boolean shouldThreadBeRunning()
    {
@@ -356,5 +355,4 @@ public class Glory
    {
       return mRunningThreads.isInList(t.getName());
    }
-     
 }
